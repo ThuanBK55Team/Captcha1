@@ -2,14 +2,16 @@
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
-#include "create.h"
+#include "createTestcase.h"
 
 using namespace std;
 
+#define MAX 32
+
 int N = 0;
-char Answer[32];
-char input[10000][32];
-int Count[10000];
+char Answer[MAX];
+char input[10001][MAX];
+int Count[10001];
 int endStack;
 void ResetStack(){
 	endStack = 0;
@@ -18,20 +20,20 @@ void ResetStack(){
 		Count[i] = 0;
 	}
 }
-int InStack(char temp[]){
+int InStack(char temp[MAX]){
 	int i;
 	for (i = 0; i < endStack; i++){
 		if (strcmp(temp, input[i]) == 0)return i;
 	}
 	return -1;
 }
-void Push(char temp[]){
+void Push(char temp[MAX]){
 	strcpy(input[endStack], temp);
 	Count[endStack]++;
 	endStack++;
 }
 void main(){
-	//CreateInput(2);
+	CreateInput(20);
 	freopen("input.txt", "r", stdin);
 	int testcase, NT;
 	scanf("%d", &NT);
@@ -40,7 +42,7 @@ void main(){
 		int i = 0;
 		ResetStack();
 		for (i = 0; i < N; i++){
-			char temp[32];
+			char temp[MAX];
 			scanf("%s", temp);
 			int dirInStack = InStack(temp);
 			if (dirInStack >= 0)Count[dirInStack]++;
@@ -53,6 +55,6 @@ void main(){
 				strcpy(Answer, input[i]);
 			}
 		}
-		printf("Testcase #%d %s %.0f%c", testcase, Answer, ((float)max / N * 100), '%');
+		printf("Testcase #%d %s %.0f%c\n", testcase, Answer, ((float)max / N * 100), '%');
 	}
 }

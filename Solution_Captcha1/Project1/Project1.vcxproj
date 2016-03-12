@@ -65,9 +65,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="create.h" />
+    <ClInclude Include="createTestcase.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="answer.txt" />
     <Text Include="input.txt" />
   </ItemGroup>
   <ItemGroup>
