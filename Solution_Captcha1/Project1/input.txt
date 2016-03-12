@@ -1,0 +1,12 @@
+1
+10
+aab
+acb
+aab
+abd
+bac
+abb
+aab
+aaa
+bbb
+aab
