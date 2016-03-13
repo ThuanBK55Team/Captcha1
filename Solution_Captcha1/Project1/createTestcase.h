@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 using namespace std;
-#define MAX 32
+#define MAX 45
 
 void CreateInput(int NT){
 	int i, j, k;
@@ -22,7 +22,8 @@ void CreateInput(int NT){
 
 	fileinput << NT << endl;
 	for (testcase = 1; testcase <= NT; testcase++){
-		N = (rand() % 5 + 1) * testcase * 100;
+		N = (9990 / (NT - 1) / (NT - 2) - 10 / (NT - 2))*testcase*testcase + (10 - 3 * 9990 / (NT - 1) / (NT - 2) + 10 / (NT - 2))*testcase + 2 * 9990 / (NT - 1) / (NT - 2);
+		N = (N > 10000) ? 10000 : N;
 		fileinput << N << endl;
 		// Create Answer
 		int length = (rand() % (MAX - 1)) + 1;
@@ -58,7 +59,7 @@ void CreateInput(int NT){
 		for (i = 0; i < N; i++){
 			fileinput << input[i] << endl;
 		}
-		fileanswer << "Testcase #" << testcase << " " << N << " " << Answer << " " << (float)CountAnswer / N * 100 << endl;
+		fileanswer << "Testcase #" << testcase << " " << N << " " << Answer << " " << (int)((float)CountAnswer / N * 100 + 0.5) << endl;
 	}
 	fileinput.close();
 	fileanswer.close();

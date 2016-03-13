@@ -6,7 +6,7 @@
 
 using namespace std;
 
-#define MAX 32
+#define MAX 45
 
 int N = 0;
 char Answer[MAX];
@@ -33,7 +33,7 @@ void Push(char temp[MAX]){
 	endStack++;
 }
 void main(){
-	CreateInput(20);
+	CreateInput(50);
 	freopen("input.txt", "r", stdin);
 	int testcase, NT;
 	scanf("%d", &NT);
@@ -55,6 +55,6 @@ void main(){
 				strcpy(Answer, input[i]);
 			}
 		}
-		printf("Testcase #%d %s %.0f%c\n", testcase, Answer, ((float)max / N * 100), '%');
+		printf("Testcase #%d %s %.0f\n", testcase, Answer, ((float)max / N * 100));
 	}
 }
