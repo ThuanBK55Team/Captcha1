@@ -1,0 +1,138 @@
+<b>
+<span style="color: red;">Bài toán này nằm trong loạt bài giới thiệu thuật toán "Quy hoạch động" - Dynamic</span>
+</b>
+<br />
+<!---------------------------0. START---------------------------->
+<h4>
+Captcha được phát minh ra nhằm mục đích bảo vệ các trang web và hệ thống khỏi các hành vi phá hoại của các chương trình giả dạng con người (nhằm các mục đích xấu) hay gọi là bot hoặc spam bots. Captcha là chương trình phép thử tự động được tạo ra với mục đích hầu hết mọi người có thể vượt qua trong khi các chương trình máy tính hiện đại không thể vượt qua, đảm bảo robot không thể liên tục truy cập vào server từ một địa chỉ. Captcha là một mã hình ảnh đã được xử lý để robot rất khó đọc được. Tuy nhiên Captcha nảy sinh ra một vấn đề, đó là tốn thời gian của người dùng một cách vô nghĩa . Một vài ông kỹ sư đầu to ở Mỹ đã nghĩ ra một cách rất thông minh giải quyết vấn đề này. Họ dùng mã Captcha cấu tạo gồm 2 phần, phần 1 hệ thống đã biết mã thật (nó hiển thị gì) và phần 2 chưa biết. Người ta sẽ thống kê các kết quả người dùng gõ mã mà đúng phần 1, và được 1 bảng dữ liệu cho phần mã 2. Dữ liệu này được dùng để xác định chính xác đoạn mã 2 viết gì. Nó được sử dụng để số hóa các văn bản mà các hệ thống bot khác không làm được (như dự án số hóa toàn bộ sách của Google cần cái này), giúp tiết kiệm bộ nhớ(lưu text thì đỡ tốn bộ nhớ hơn ảnh), nhận diện chữ viết, huấn luyện robot..vv... Và mã capcha sau khi dc giải mã có thể lại được dùng làm mã capcha thật (đoạn mã 1 ở trên), vào chắc chắn robot ko thể phá được. Sau khi thu thập được dữ liệu gõ capcha của người dùng, mã đúng của nó là kết quả mà trên 75% người dùng gõ. Đó là bài toán thực tế, nhưng hoạt động của nó không hề đơn giản, ở đây mình chỉ đưa ra 1 bài toán rất đơn giản, khi dữ liệu đã được thu thập và sắp xếp. Trong một bài khác, chúng ta sẽ làm việc với dữ liệu thực tế hơn. 
+</h4><br />
+<!---------------------------1. USING---------------------------->
+<h3>
+<span style="color: blue;">
+1. USING
+</span>
+</h3><br />
+Stack
+<br />
+<br />
+<!---------------------------2. QUESTION---------------------------->
+<h3>
+<span style="color: blue;">
+<b>2. QUESTION</b></span>
+</h3><br />
+Giả sử dữ liệu đã được thu thập và lưu trữ cho từng mã Captcha một, bài toán ở đây rất đơn giản, tìm và in ra đoạn mã được người dùng điền nhiều nhất và tỉ lệ phần trăm (định dạng %.0f) của mã đó trong toàn bộ dữ liệu được lưu.
+<br />
+
+<!--more--><br />
+<!---------------------------3. INPUT & OUTPUT---------------------------->
+<h3><span style="color: blue;">
+3. INPUT & OUTPUT :
+</span></h3><br />
+<b>Giới hạn :</b><br />
+Số Testcase NT không quá 50 <br />
+Lượng dữ liệu N trong 1 testcase không quá 10000<br />
+Độ dài 1 mã không quá 45<br />
+
+<br />
+<b>
+INPUT : 
+</b><br />
+<!---------------------------3.1.Start input---------------------------->
+1 //- Dòng đầu tiên NT chỉ số lượng testcase<br />
+10 //- Dòng đầu tiên mỗi testcase chứa lượng dữ liệu N<br />
+aab //- 10 dòng tiếp chứa 10 mã<br />
+abb<br />
+aab<br />
+abd<br />
+aaa<br />
+aba<br />
+aab<br />
+abb<br />
+add<br />
+aab<br />
+
+<!---------------------------3.1.End input---------------------------->
+<b>OUTPUT : </b><br />
+<!---------------------------3.2.Start output---------------------------->
+TestCase #1 aab 40 // Mã xuất hiện nhiều nhất với 40%<br />
+<br />
+<!---------------------------3.2.End output---------------------------->
+
+<a href="https://drive.google.com/file/d/0ByZ7GYY83Ui-R0lkNjdkNGhMMzQ/view?usp=sharing" target="_blank">Download File Testcase</a><br /><br />
+<a href="https://drive.google.com/file/d/0ByZ7GYY83Ui-VUlRcGVHa0ZYS1U/view?usp=sharing" target="_blank">Download File Answer</a><br /><br />
+<!---------------------------4. SAMPLE CODE---------------------------->
+<!---------------------------4.1.Start Show/Hide---------------------------->
+<div>
+<div class="smallfont" style="margin-bottom: 2px;">
+<h3><span style="color: blue;">
+4. SAMPLE CODE:
+</span></h3>
+<input onclick="if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = ''; this.innerText = ''; this.value = 'Ẩn'; } else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; this.innerText = ''; this.value = 'Hiện'; }" style="font-size: 11px; margin: 0px; padding: 0px; width: 55px;" type="button" value="Hiện" /></div>
+<div class="alt2" style="border: 1px inset; margin: 0px; padding: 6px;">
+<div style="display: none;"><br />
+<!---------------------------4.1.Start Code---------------------------->
+
+<pre style="background:#002240;color:#fff"><span style="color:#8996a8">#<span style="color:#afc4db">include</span> <span style="color:#3ad900">&lt;</span>stdio.h<span style="color:#3ad900">></span></span>
+<span style="color:#8996a8">#<span style="color:#afc4db">include</span> <span style="color:#3ad900">&lt;</span>iostream<span style="color:#3ad900">></span></span>
+<span style="color:#8996a8">#<span style="color:#afc4db">include</span> <span style="color:#3ad900">&lt;</span>fstream<span style="color:#3ad900">></span></span>
+<span style="color:#8996a8">#<span style="color:#afc4db">include</span> <span style="color:#3ad900">&lt;</span>stdlib.h<span style="color:#3ad900">></span></span>
+
+<span style="color:#ff9d00">using</span> <span style="color:#ffee80">namespace</span> <span style="color:#fd0">std</span>;
+
+#<span style="color:#ff9d00">define</span> <span style="color:#fd0">MAX</span> 45
+
+<span style="color:#ffee80">int</span> N = <span style="color:#ff628c">0</span>;
+<span style="color:#ffee80">char</span> Answer[MAX];
+<span style="color:#ffee80">char</span> input[<span style="color:#ff628c">10001</span>][MAX];
+<span style="color:#ffee80">int</span> Count[<span style="color:#ff628c">10001</span>];
+<span style="color:#ffee80">int</span> endStack;
+<span style="color:#ffee80">void</span><span style="color:#e1efff"> </span><span style="color:#fd0">ResetStack</span>(){
+    endStack = 0;
+    int i;
+    for <span style="color:#e1efff">(</span>i = 0; i &lt; N; i++){
+        Count[i] = 0;
+    }
+}
+<span style="color:#ffee80">int</span><span style="color:#e1efff"> </span><span style="color:#fd0">InStack</span>(char temp[MAX]){
+    int i;
+    for <span style="color:#e1efff">(</span>i = 0; i &lt; endStack; i++){
+        if <span style="color:#e1efff">(</span><span style="color:#ffb054">strcmp</span>(temp, input[i]) == 0)return i;
+    }
+    return -1;
+}
+<span style="color:#ffee80">void</span><span style="color:#e1efff"> </span><span style="color:#fd0">Push</span>(char temp[MAX]){
+<span style="color:#e1efff">    </span>strcpy(input[endStack], temp);
+    Count[endStack]++;
+    endStack++;
+}
+<span style="color:#ffee80">void</span><span style="color:#e1efff"> </span><span style="color:#fd0">main</span>(){
+<span style="color:#e1efff">    </span>freopen("input<span style="color:#ccc">.txt</span>", "r", stdin);
+    int testcase, NT;
+<span style="color:#e1efff">    </span>scanf("%d", &amp;NT);
+    for <span style="color:#e1efff">(</span>testcase = 1; testcase &lt;= NT; testcase++){
+<span style="color:#e1efff">        </span>scanf("%d", &amp;N);
+        int i = 0;
+<span style="color:#ffee80"><span style="color:#e1efff">        </span>ResetStack(</span>);
+        for <span style="color:#e1efff">(</span>i = 0; i &lt; N; i++){
+            char temp[MAX];
+<span style="color:#e1efff">            </span>scanf("%s", temp);
+            int dirInStack =<span style="color:#ffee80"><span style="color:#e1efff"> </span>InStack(</span>temp);
+            if <span style="color:#e1efff">(</span>dirInStack >= 0)Count[dirInStack]++;
+            else<span style="color:#ffee80"><span style="color:#e1efff"> </span>Push(</span>temp);
+        }
+        int max = 0;
+        for <span style="color:#e1efff">(</span>i = 0; i &lt; N; i++){
+            if <span style="color:#e1efff">(</span>Count[i]>max){
+                max = Count[i];
+<span style="color:#e1efff">                </span>strcpy(Answer, input[i]);
+            }
+        }
+<span style="color:#e1efff">        </span>printf("Testcase #%d %s %.0f\n", testcase, Answer, ((float)max / N * 100));
+    }
+}
+</pre>
+<!---------------------------4.1.End Code---------------------------->
+</div>
+</div>
+</div>
+<!---------------------------4.End Show/Hide---------------------------->
